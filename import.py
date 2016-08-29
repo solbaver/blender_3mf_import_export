@@ -71,7 +71,7 @@ if unit == 'foot':
 if unit == 'inch':
 	bpy.context.scene.unit_settings.system = 'IMPERIAL'
 	bpy.context.scene.scale_length = 0.1	
-##mi
+
 
 
 while num < objects_number:
@@ -84,7 +84,7 @@ while num < objects_number:
 	vetexes = []
 	triangles = []
 
-##peredelat nahui!!!!
+
 	ob = BeautifulSoup(str(ob)[1:-1], features="xml")
 	vertex = ob.findAll('vertex')
 	triangle = ob.findAll('triangle')
@@ -124,13 +124,13 @@ while num < objects_number:
 		triangles_3.append(t.triangle['v3'])
 	
 	i = 0	
-		##peredelat nahui!!!!!!
+
 	while i < len(vertexes_x):
 		vertex_tuple = (float(vertexes_x[i]), float(vertexes_y[i]), float(vertexes_z[i]))	
 		verts.insert(i, vertex_tuple)
 		i = i + 1
 	verts = tuple(verts)
-	#print (verts)
+
 
 	i = 0	
 	while i < len(triangles_1):
@@ -139,7 +139,7 @@ while num < objects_number:
 		i = i + 1
 
 	faces = tuple(faces)
-	#print (faces)
+
 
 	mesh_name = str(num)
 	#creating object in blender
@@ -150,8 +150,7 @@ while num < objects_number:
 	scn.objects.active = blender_ob
 	blender_ob.select = True
 
-	#	mesh = bpy.data.meshes.new(mesh_name)
-	#mesh.from_pydata(verts, [], faces)
+
 
 	blender_me.from_pydata(verts, [], faces)
 
@@ -159,7 +158,7 @@ while num < objects_number:
 	num = num + 1
 
 	blender_ob.matrix_world = matrix * blender_ob.matrix_world 
-	#print (blender_ob.matrix_world)
+
 
     
 model_file.close()

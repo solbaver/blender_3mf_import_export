@@ -55,30 +55,23 @@ def find_transformation(ob):
 			print (new_matrix)
 			
 
-			#t.write(matrix_output)
+
 
 			return new_matrix
 def create_object(ob, i, t):			
 
 	t.write('''<object id="''' + str(i) +  '''" name="''' + str(ob.name) + '''" type="model">''' + '\n')
 	t.write('''<mesh>''' + '\n')
-
-	#print (coords)
-	#print (len(coords))
 	t.write('''<vertices>''' + '\n')
 	vert_coords = [(ob.matrix_world * v.co) for v in ob.data.vertices]
 	for c in vert_coords:
 		t.write('''<vertex x="''' + str(c[0]) + '''" y="''' + str(c[1]) + '''" z="''' + str(c[2]) + '''"/>''' + '\n')
-	#t.write('''<TEST id="''' + str(i) +  '''" name="''' + str(ob.name) + '''" type="model"/>''' + '\n')
 	t.write('''</vertices>''' + '\n')
-	
 	t.write('''<triangles>''' + '\n')
 	poly_coords = [(p.vertices[:]) for p in ob.data.polygons]
 	for c in poly_coords:
 		t.write('''<triangle v1="''' + str(c[0]) + '''" v2="''' + str(c[1]) + '''" v3="''' + str(c[2]) + '''"/>''' + '\n')
-	#t.write('''<TEST id="''' + str(i) +  '''" name="''' + str(ob.name) + '''" type="model"/>''' + '\n')
 	t.write('''</triangles>''' + '\n')
-	
 	t.write('''</mesh>''' + '\n')
 	t.write('''</object>''' + '\n')
 	
